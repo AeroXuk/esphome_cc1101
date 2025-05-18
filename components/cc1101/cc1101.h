@@ -13,7 +13,7 @@ class CC1101Component : public Component {
   CC1101Component();
   //void loop() override;
   //void dump_config() override;
-}
+};
 
 } // namespace cc1101
 } // namespace esphome
