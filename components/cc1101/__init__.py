@@ -7,13 +7,14 @@ from esphome.const import (
     CONF_CLK_PIN,
     CONF_CS_PIN,
     CONF_MISO_PIN,
-    CONF_MOSI_PIN
+    CONF_MOSI_PIN,
+    CONF_FREQUENCY
 )
 
 CONF_GDO0_PIN = "gdo0_pin"
 CONF_GDO2_PIN = "gdo2_pin"
 
-DEPENDENCIES = ["spi", "SmartRC-CC1101-Driver-Lib"]
+DEPENDENCIES = ["spi"]
 CODEOWNERS = ["@AeroXuk"]
 
 cc1101_ns = cg.esphome_ns.namespace("cc1101")
