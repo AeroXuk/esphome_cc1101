@@ -31,7 +31,7 @@ CONFIG_SCHEMA = cv.All(
         }
     )
     .extend(cv.COMPONENT_SCHEMA)
-    .extend(spi.spi_device_schema(False, "200kHz"))
+    .extend(spi.spi_device_schema(False, "1MHz"))
 )
 
 async def to_code(config):
