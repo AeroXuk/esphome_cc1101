@@ -27,7 +27,8 @@ CONFIG_SCHEMA = cv.All(
         {
             cv.GenerateID(CONF_ID): cv.declare_id(CC1101Component),
             cv.Optional(CONF_GDO0_PIN): pins.gpio_output_pin_schema,
-            cv.Optional(CONF_GDO2_PIN): pins.gpio_input_pin_schema
+            cv.Optional(CONF_GDO2_PIN): pins.gpio_input_pin_schema,
+            cv.Required(CONF_FREQUENCY): cv.float_
         }
     )
     .extend(cv.COMPONENT_SCHEMA)

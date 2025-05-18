@@ -6,21 +6,46 @@ namespace cc1101 {
 
 static const char *const TAG = "cc1101";
 
-/*
-src/main.cpp:260:16: error: 'class esphome::cc1101::CC1101Component' has no member named 'set_spi_parent'
-  260 |   cc1101_chip->set_spi_parent(spi_spicomponent_id);
-      |                ^~~~~~~~~~~~~~
-src/main.cpp:265:16: error: 'class esphome::cc1101::CC1101Component' has no member named 'set_cs_pin'
-  265 |   cc1101_chip->set_cs_pin(rp2040_rp2040gpiopin_id_4);
-      |                ^~~~~~~~~~
-src/main.cpp:266:16: error: 'class esphome::cc1101::CC1101Component' has no member named 'set_data_rate'
-  266 |   cc1101_chip->set_data_rate(spi::DATA_RATE_200KHZ);
-*/
-
-CC1101Component::CC1101Component() {
-
+void CC1101Component::beginTransmission() {
+  ELECHOUSE_cc1101.SetTx();
 };
 
+void CC1101Component::endTransmission() {
+  ELECHOUSE_cc1101.setSidle();
+};
+
+void CC1101Component::setMhz(float freq) {
+  ELECHOUSE_cc1101.setMHZ(freq);
+};
+
+void CC1101Component::setup() {
+  ESP_LOGD(TAG, "Setting up CC1101...");
+  this->spi_setup();
+
+  // ELECHOUSE_cc1101.setMHZ(freq);
+
+  ESP_LOGD(TAG, "CC1101 started!");
+};
+
+void CC1101Component::dump_config() {
+  ESP_LOGCONFIG(TAG, "CC1101:");
+
+  LOG_PIN("  SCK  Pin:  ", this->sck_pin_);
+  LOG_PIN("  MISO Pin:  ", this->miso_pin_);
+  LOG_PIN("  MOSI Pin:  ", this->mosi_pin_);
+
+  LOG_PIN("  CSN  Pin:  ", this->cs_pin_);
+  LOG_PIN("  GDO0 Pin:  ", this->gdo0_pin_);
+  LOG_PIN("  GDO2 Pin:  ", this->gdo2_pin_);
+
+  ESP_LOGCONFIG(TAG, "  Frequency: %.2f MHz", this->frequency_);
+  
+  if (this->data_rate_ >= spi::DATA_RATE_1MHZ) {
+    ESP_LOGCONFIG(TAG, "  Data rate: %uMHz", (unsigned) (this->data_rate_ / 1000000));
+  } else {
+    ESP_LOGCONFIG(TAG, "  Data rate: %ukHz", (unsigned) (this->data_rate_ / 1000));
+  }
+};
 
 } // namespace cc1101
 } // namespace esphome
