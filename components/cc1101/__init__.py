@@ -1,4 +1,4 @@
-from esphome import automation, pins
+from esphome import pins
 from esphome.components import spi
 import esphome.codegen as cg
 import esphome.config_validation as cv

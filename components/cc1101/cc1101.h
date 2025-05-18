@@ -3,7 +3,7 @@
 #include <ELECHOUSE_CC1101_SRC_DRV.h>
 
 #include "esphome/core/component.h"
-#include "esphome/core/automation.h"
+#include "esphome/components/spi/spi.h"
 
 namespace esphome {
 namespace cc1101 {
