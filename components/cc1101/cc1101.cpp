@@ -27,6 +27,10 @@ void CC1101Component::setup() {
   ESP_LOGD(TAG, "CC1101 started!");
 };
 
+void CC1101Component::loop() {
+  // Not currently used
+};
+
 void CC1101Component::dump_config() {
   this->parent_->dump_config();
 
