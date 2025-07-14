@@ -33,12 +33,12 @@ class CC1101Component : public Component {
   void setMhz(float freq);
 
  protected:
-  int clk_pin_ {nullptr};
-  int sdi_pin_ {nullptr};
-  int sdo_pin_ {nullptr};
-  int cs_ {nullptr};
-  int gdo0_ {nullptr};
-  int gdo2_ {nullptr};
+  int clk_pin_ {0};
+  int sdi_pin_ {0};
+  int sdo_pin_ {0};
+  int cs_ {0};
+  int gdo0_ {0};
+  int gdo2_ {0};
   float frequency_ {868.35};
 };
 

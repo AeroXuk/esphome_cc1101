@@ -23,11 +23,11 @@ void CC1101Component::setup() {
 
   // Setup Pins
   ELECHOUSE_cc1101.setSpiPin(this->clk_pin_, this->sdi_pin_, this->sdo_pin_, this->cs_);
-  if (this->gdo0_ != nullptr && this->gdo2_ != nullptr) {
+  if (this->gdo0_ != 0 && this->gdo2_ != 0) {
     ELECHOUSE_cc1101.setGDO(this->gdo0_, this->gdo2_);
-  } else if(this->gdo0_ != nullptr) {
+  } else if(this->gdo0_ != 0) {
     ELECHOUSE_cc1101.setGDO0(this->gdo0_);
-  }else if(this->gdo2_ != nullptr) {
+  }else if(this->gdo2_ != 0) {
     ELECHOUSE_cc1101.setGDO2(this->gdo2_);
   }
 
