@@ -55,9 +55,9 @@ void CC1101Component::loop() {
 
 void CC1101Component::dump_config() {
   ESP_LOGCONFIG(TAG, "CC1101:");
-  ESP_LOGCONFIG(TAG, "  CLK  Pin:  ", this->clk_pin_)
-  ESP_LOGCONFIG(TAG, "  SDI  Pin:  ", this->sdi_pin_)
-  ESP_LOGCONFIG(TAG, "  SDO  Pin:  ", this->sdo_pin_)
+  ESP_LOGCONFIG(TAG, "  CLK  Pin:  ", this->clk_pin_);
+  ESP_LOGCONFIG(TAG, "  SDI  Pin:  ", this->sdi_pin_);
+  ESP_LOGCONFIG(TAG, "  SDO  Pin:  ", this->sdo_pin_);
   ESP_LOGCONFIG(TAG, "  CSN  Pin:  ", this->cs_);
   ESP_LOGCONFIG(TAG, "  GDO0 Pin:  ", this->gdo0_);
   ESP_LOGCONFIG(TAG, "  GDO2 Pin:  ", this->gdo2_);
