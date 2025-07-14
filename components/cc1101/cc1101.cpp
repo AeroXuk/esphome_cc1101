@@ -37,13 +37,13 @@ void CC1101Component::dump_config() {
   ESP_LOGCONFIG(TAG, "  Frequency: %.2f MHz", this->frequency_);
   
   ESP_LOGCONFIG(TAG, "  SPI Settings:");
-  ESP_LOGCONFIG(TAG, "    Bit Order: %s",
-    (this->bit_order == spi::BIT_ORDER_MSB_FIRST ? "MSB First" : "LSB First"));
+  ESP_LOGCONFIG(TAG, "    SPI Mode: MODE%d", this->mode_);
   ESP_LOGCONFIG(TAG, "    Clock Polarity: %s",
-    (this->clock_polarity == spi::CLOCK_POLARITY_LOW ? "Low (Idle Low)" : "High (Idle High)"));
+    (((this->mode_ >> 1) & 0x01) ? "High (Idle High)" : "Low (Idle Low)"));
   ESP_LOGCONFIG(TAG, "    Clock Phase: %s",
-    (this->clock_phase == spi::CLOCK_PHASE_LEADING ? "Leading Edge (Mode 0/2)" : "Trailing Edge (Mode 1/3)"));
-    
+    ((this->mode_ & 0x01) ? "Trailing Edge (Mode 1/3)" : "Leading Edge (Mode 0/2)"));
+  ESP_LOGCONFIG(TAG, "    Bit Order: %s",
+    (this->bit_order_ == spi::BIT_ORDER_MSB_FIRST ? "MSB First" : "LSB First"));
   if (this->data_rate_ >= spi::DATA_RATE_1MHZ) {
     ESP_LOGCONFIG(TAG, "    Data Rate: %uMHz", (unsigned) (this->data_rate_ / 1000000));
   } else {
