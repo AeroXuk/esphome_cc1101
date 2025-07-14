@@ -33,6 +33,9 @@ void CC1101Component::setMhz(float freq) {
 void CC1101Component::setup() {
   ESP_LOGD(TAG, "Setting up CC1101...");
 
+  // Register with ESPHome runtime
+  App.register_component(this);
+
   // Setup Pins
   ELECHOUSE_cc1101.setSpiPin(this->clk_pin_, this->sdi_pin_, this->sdo_pin_, this->cs_);
   if (this->gdo0_ != 0 && this->gdo2_ != 0) {
