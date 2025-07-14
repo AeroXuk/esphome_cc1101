@@ -30,9 +30,9 @@ void CC1101Component::setup() {
 void CC1101Component::dump_config() {
   ESP_LOGCONFIG(TAG, "CC1101:");
 
-  LOG_PIN("  CLK  Pin:  ", this->clk_pin_);
-  LOG_PIN("  MISO Pin:  ", this->sdi_pin_);
-  LOG_PIN("  MOSI Pin:  ", this->sdo_pin_);
+  LOG_PIN("  CLK  Pin:  ", this->parent_->clk_pin_);
+  LOG_PIN("  MISO Pin:  ", this->parent_->sdi_pin_);
+  LOG_PIN("  MOSI Pin:  ", this->parent_->sdo_pin_);
 
   LOG_PIN("  CSN  Pin:  ", this->cs_);
   LOG_PIN("  GDO0 Pin:  ", this->gdo0_);
