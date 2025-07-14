@@ -3,7 +3,7 @@
 #include <ELECHOUSE_CC1101_SRC_DRV.h>
 
 #include "esphome/core/component.h"
-#include "esphome/core/gpio.h"
+//#include "esphome/core/gpio.h"
 //#include "esphome/components/spi/spi.h"
 
 namespace esphome {
@@ -18,13 +18,13 @@ class CC1101Component : public Component {
   void dump_config() override;
 
   // Setup Methods
-  void set_clock_pin(GPIOPin *pin) { this->clk_pin_ = pin; }
-  void set_miso_pin(GPIOPin *pin) { this->sdi_pin_ = pin; }
-  void set_mosi_pin(GPIOPin *pin) { this->sdo_pin_ = pin; }
-  void set_select_pin(GPIOPin *pin) { this->cs_ = pin; }
+  void set_clock_pin(int pin) { this->clk_pin_ = pin; }
+  void set_miso_pin(int pin) { this->sdi_pin_ = pin; }
+  void set_mosi_pin(int pin) { this->sdo_pin_ = pin; }
+  void set_select_pin(int pin) { this->cs_ = pin; }
 
-  void set_gdo0_pin(GPIOPin *pin) { this->gdo0_ = pin; }
-  void set_gdo2_pin(GPIOPin *pin) { this->gdo2_ = pin; }
+  void set_gdo0_pin(int pin) { this->gdo0_ = pin; }
+  void set_gdo2_pin(int pin) { this->gdo2_ = pin; }
   void set_frequency(float freq) { this->frequency_ = freq; }
 
   // Api
@@ -33,12 +33,12 @@ class CC1101Component : public Component {
   void setMhz(float freq);
 
  protected:
-  GPIOPin *clk_pin_ {nullptr};
-  GPIOPin *sdi_pin_ {nullptr};
-  GPIOPin *sdo_pin_ {nullptr};
-  GPIOPin *cs_ {nullptr};
-  GPIOPin *gdo0_ {nullptr};
-  GPIOPin *gdo2_ {nullptr};
+  int clk_pin_ {nullptr};
+  int sdi_pin_ {nullptr};
+  int sdo_pin_ {nullptr};
+  int cs_ {nullptr};
+  int gdo0_ {nullptr};
+  int gdo2_ {nullptr};
   float frequency_ {868.35};
 };
 
