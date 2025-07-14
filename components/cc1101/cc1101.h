@@ -26,6 +26,9 @@ class CC1101Component : public Component {
   // Api
   void beginTransmission();
   void endTransmission();
+  void beginReception();
+  void endReception();
+  void setPa(int power);
   void setMhz(float freq);
 
  protected:

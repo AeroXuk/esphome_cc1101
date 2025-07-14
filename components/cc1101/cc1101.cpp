@@ -14,6 +14,18 @@ void CC1101Component::endTransmission() {
   ELECHOUSE_cc1101.setSidle();
 };
 
+void CC1101Component::beginReception() {
+  ELECHOUSE_cc1101.SetRx();
+};
+
+void CC1101Component::endReception() {
+  ELECHOUSE_cc1101.setSidle();
+};
+
+void CC1101Component::setPa(int power) {
+  ELECHOUSE_cc1101.setPA(power);
+};
+
 void CC1101Component::setMhz(float freq) {
   ELECHOUSE_cc1101.setMHZ(freq);
 };
