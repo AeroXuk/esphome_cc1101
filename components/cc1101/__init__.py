@@ -1,5 +1,5 @@
 from esphome import pins
-from esphome.components import spi
+#from esphome.components import spi
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.const import (
@@ -36,7 +36,7 @@ CONFIG_SCHEMA = cv.All(
         }
     )
     .extend(cv.COMPONENT_SCHEMA)
-    .extend(spi.spi_device_schema(False, "1MHz"))
+    #.extend(spi.spi_device_schema(False, "1MHz"))
 )
 
 async def to_code(config):
