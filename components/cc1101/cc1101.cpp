@@ -56,7 +56,7 @@ void CC1101Component::setup() {
   ELECHOUSE_cc1101.setModulation(2); // 2 = ASK/OOK
   ELECHOUSE_cc1101.setPktFormat(3); // 3 = Async Serial
   ELECHOUSE_cc1101.setSidle();
-  //ELECHOUSE_cc1101.SetRx();
+  ELECHOUSE_cc1101.SetRx();
 
   ESP_LOGD(TAG, "CC1101 started!");
 };
