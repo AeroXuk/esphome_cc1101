@@ -1,5 +1,4 @@
 from esphome import pins
-#from esphome.components import spi
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.const import (
@@ -36,7 +35,6 @@ CONFIG_SCHEMA = cv.All(
         }
     )
     .extend(cv.COMPONENT_SCHEMA)
-    #.extend(spi.spi_device_schema(False, "1MHz"))
 )
 
 async def to_code(config):
@@ -54,6 +52,4 @@ async def to_code(config):
         cg.add(var.set_gdo2_pin(config[CONF_GDO2_PIN]))
 
     cg.add(var.set_frequency(config[CONF_FREQUENCY]))
-
-    #await spi.register_spi_device(var, config)
     await cg.register_component(var, config)
