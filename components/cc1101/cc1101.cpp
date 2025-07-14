@@ -20,9 +20,33 @@ void CC1101Component::setMhz(float freq) {
 
 void CC1101Component::setup() {
   ESP_LOGD(TAG, "Setting up CC1101...");
-  this->spi_setup();
 
-  //ELECHOUSE_cc1101.setMHZ(this->frequency_);
+  // Setup Pins
+  ELECHOUSE_cc1101.setSpiPin(this->clk_pin_, this->sdi_pin_, this->sdo_pin_, this->cs_);
+  if (this->gdo0_ != nullptr && this->gdo2_ != nullptr) {
+    ELECHOUSE_cc1101.setGDO(this->gdo0_, this->gdo2_);
+  } else if(this->gdo0_ != nullptr) {
+    ELECHOUSE_cc1101.setGDO0(this->gdo0_);
+  }else if(this->gdo2_ != nullptr) {
+    ELECHOUSE_cc1101.setGDO2(this->gdo2_);
+  }
+
+  // Test Chip
+  if (ELECHOUSE_cc1101.getCC1101()) {
+    ESP_LOGD("custom", "CC1101 Connection OK.");
+  }
+  else {
+    ESP_LOGD("custom", "CC1101 Connection Error.");
+  }
+  
+  // Init Chip
+  ELECHOUSE_cc1101.Init();
+  ELECHOUSE_cc1101.setPA(10);
+  ELECHOUSE_cc1101.setMHZ(this->frequency_);
+  ELECHOUSE_cc1101.setModulation(2); // 2 = ASK/OOK
+  ELECHOUSE_cc1101.setPktFormat(3); // 3 = Async Serial
+  ELECHOUSE_cc1101.setSidle();
+  //ELECHOUSE_cc1101.SetRx();
 
   ESP_LOGD(TAG, "CC1101 started!");
 };
@@ -35,6 +59,9 @@ void CC1101Component::dump_config() {
   this->parent_->dump_config();
 
   ESP_LOGCONFIG(TAG, "CC1101:");
+  LOG_PIN("  CLK  Pin:  ", this->clk_pin_)
+  LOG_PIN("  SDI  Pin:  ", this->sdi_pin_)
+  LOG_PIN("  SDO  Pin:  ", this->sdo_pin_)
   LOG_PIN("  CSN  Pin:  ", this->cs_);
   LOG_PIN("  GDO0 Pin:  ", this->gdo0_);
   LOG_PIN("  GDO2 Pin:  ", this->gdo2_);

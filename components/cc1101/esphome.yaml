@@ -13,13 +13,11 @@ external_components:
 logger:
   level: VERBOSE
 
-spi:
+cc1101:
+  id: cc1101_chip
   clk_pin: GPIO18
   mosi_pin: GPIO19
   miso_pin: GPIO16
-
-cc1101:
-  id: cc1101_chip
   cs_pin: GPIO17
   gdo0_pin: GPIO20
   gdo2_pin: GPIO21
