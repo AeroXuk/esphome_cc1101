@@ -28,22 +28,26 @@ void CC1101Component::setup() {
 };
 
 void CC1101Component::dump_config() {
+  this->parent_->dump_config();
+
   ESP_LOGCONFIG(TAG, "CC1101:");
-
-  LOG_PIN("  CLK  Pin:  ", this->parent_->clk_pin_);
-  LOG_PIN("  MISO Pin:  ", this->parent_->sdi_pin_);
-  LOG_PIN("  MOSI Pin:  ", this->parent_->sdo_pin_);
-
   LOG_PIN("  CSN  Pin:  ", this->cs_);
   LOG_PIN("  GDO0 Pin:  ", this->gdo0_);
   LOG_PIN("  GDO2 Pin:  ", this->gdo2_);
-
   ESP_LOGCONFIG(TAG, "  Frequency: %.2f MHz", this->frequency_);
   
+  ESP_LOGCONFIG(TAG, "  SPI Settings:");
+  ESP_LOGCONFIG(TAG, "    Bit Order: %s",
+    (this->bit_order == spi::BIT_ORDER_MSB_FIRST ? "MSB First" : "LSB First"));
+  ESP_LOGCONFIG(TAG, "    Clock Polarity: %s",
+    (this->clock_polarity == spi::CLOCK_POLARITY_LOW ? "Low (Idle Low)" : "High (Idle High)"));
+  ESP_LOGCONFIG(TAG, "    Clock Phase: %s",
+    (this->clock_phase == spi::CLOCK_PHASE_LEADING ? "Leading Edge (Mode 0/2)" : "Trailing Edge (Mode 1/3)"));
+    
   if (this->data_rate_ >= spi::DATA_RATE_1MHZ) {
-    ESP_LOGCONFIG(TAG, "  Data rate: %uMHz", (unsigned) (this->data_rate_ / 1000000));
+    ESP_LOGCONFIG(TAG, "    Data Rate: %uMHz", (unsigned) (this->data_rate_ / 1000000));
   } else {
-    ESP_LOGCONFIG(TAG, "  Data rate: %ukHz", (unsigned) (this->data_rate_ / 1000));
+    ESP_LOGCONFIG(TAG, "    Data Rate: %ukHz", (unsigned) (this->data_rate_ / 1000));
   }
 };
 
