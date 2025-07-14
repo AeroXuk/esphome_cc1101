@@ -27,8 +27,6 @@ void CC1101Component::setup() {
     ELECHOUSE_cc1101.setGDO(this->gdo0_, this->gdo2_);
   } else if(this->gdo0_ != 0) {
     ELECHOUSE_cc1101.setGDO0(this->gdo0_);
-  }else if(this->gdo2_ != 0) {
-    ELECHOUSE_cc1101.setGDO2(this->gdo2_);
   }
 
   // Test Chip
