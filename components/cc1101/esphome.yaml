@@ -1,0 +1,26 @@
+esphome:
+  libraries:
+    - SPI
+    - lsatan/SmartRC-CC1101-Driver-Lib
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/AeroXuk/esphome_cc1101.git
+    components: [ cc1101 ]
+    refresh: 1min
+
+logger:
+  level: VERBOSE
+
+spi:
+  clk_pin: GPIO18
+  mosi_pin: GPIO19
+  miso_pin: GPIO16
+
+cc1101:
+  id: cc1101_chip
+  cs_pin: GPIO17
+  gdo0_pin: GPIO20
+  gdo2_pin: GPIO21
+  frequency: 868.35

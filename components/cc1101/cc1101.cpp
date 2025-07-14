@@ -22,7 +22,7 @@ void CC1101Component::setup() {
   ESP_LOGD(TAG, "Setting up CC1101...");
   this->spi_setup();
 
-  // ELECHOUSE_cc1101.setMHZ(freq);
+  //ELECHOUSE_cc1101.setMHZ(this->frequency_);
 
   ESP_LOGD(TAG, "CC1101 started!");
 };
@@ -30,13 +30,13 @@ void CC1101Component::setup() {
 void CC1101Component::dump_config() {
   ESP_LOGCONFIG(TAG, "CC1101:");
 
-  LOG_PIN("  SCK  Pin:  ", this->sck_pin_);
-  LOG_PIN("  MISO Pin:  ", this->miso_pin_);
-  LOG_PIN("  MOSI Pin:  ", this->mosi_pin_);
+  LOG_PIN("  SCK  Pin:  ", this->sck_);
+  LOG_PIN("  MISO Pin:  ", this->miso_);
+  LOG_PIN("  MOSI Pin:  ", this->mosi_);
 
-  LOG_PIN("  CSN  Pin:  ", this->cs_pin_);
-  LOG_PIN("  GDO0 Pin:  ", this->gdo0_pin_);
-  LOG_PIN("  GDO2 Pin:  ", this->gdo2_pin_);
+  LOG_PIN("  CSN  Pin:  ", this->cs_);
+  LOG_PIN("  GDO0 Pin:  ", this->gdo0_);
+  LOG_PIN("  GDO2 Pin:  ", this->gdo2_);
 
   ESP_LOGCONFIG(TAG, "  Frequency: %.2f MHz", this->frequency_);
   
