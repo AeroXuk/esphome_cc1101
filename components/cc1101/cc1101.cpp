@@ -1,4 +1,5 @@
 #include "cc1101.h"
+#include "esphome/core/application.h"
 #include "esphome/core/log.h"
 
 namespace esphome {
