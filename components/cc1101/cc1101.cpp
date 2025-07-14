@@ -56,7 +56,7 @@ void CC1101Component::loop() {
 };
 
 void CC1101Component::dump_config() {
-  this->parent_->dump_config();
+  // this->parent_->dump_config();
 
   ESP_LOGCONFIG(TAG, "CC1101:");
   LOG_PIN("  CLK  Pin:  ", this->clk_pin_)
@@ -67,19 +67,19 @@ void CC1101Component::dump_config() {
   LOG_PIN("  GDO2 Pin:  ", this->gdo2_);
   ESP_LOGCONFIG(TAG, "  Frequency: %.2f MHz", this->frequency_);
   
-  ESP_LOGCONFIG(TAG, "  SPI Settings:");
-  ESP_LOGCONFIG(TAG, "    SPI Mode: MODE%d", this->mode_);
-  ESP_LOGCONFIG(TAG, "    Clock Polarity: %s",
-    (((this->mode_ >> 1) & 0x01) ? "High (Idle High)" : "Low (Idle Low)"));
-  ESP_LOGCONFIG(TAG, "    Clock Phase: %s",
-    ((this->mode_ & 0x01) ? "Trailing Edge (Mode 1/3)" : "Leading Edge (Mode 0/2)"));
-  ESP_LOGCONFIG(TAG, "    Bit Order: %s",
-    (this->bit_order_ == spi::BIT_ORDER_MSB_FIRST ? "MSB First" : "LSB First"));
-  if (this->data_rate_ >= spi::DATA_RATE_1MHZ) {
-    ESP_LOGCONFIG(TAG, "    Data Rate: %uMHz", (unsigned) (this->data_rate_ / 1000000));
-  } else {
-    ESP_LOGCONFIG(TAG, "    Data Rate: %ukHz", (unsigned) (this->data_rate_ / 1000));
-  }
+  // ESP_LOGCONFIG(TAG, "  SPI Settings:");
+  // ESP_LOGCONFIG(TAG, "    SPI Mode: MODE%d", this->mode_);
+  // ESP_LOGCONFIG(TAG, "    Clock Polarity: %s",
+  //   (((this->mode_ >> 1) & 0x01) ? "High (Idle High)" : "Low (Idle Low)"));
+  // ESP_LOGCONFIG(TAG, "    Clock Phase: %s",
+  //   ((this->mode_ & 0x01) ? "Trailing Edge (Mode 1/3)" : "Leading Edge (Mode 0/2)"));
+  // ESP_LOGCONFIG(TAG, "    Bit Order: %s",
+  //   (this->bit_order_ == spi::BIT_ORDER_MSB_FIRST ? "MSB First" : "LSB First"));
+  // if (this->data_rate_ >= spi::DATA_RATE_1MHZ) {
+  //   ESP_LOGCONFIG(TAG, "    Data Rate: %uMHz", (unsigned) (this->data_rate_ / 1000000));
+  // } else {
+  //   ESP_LOGCONFIG(TAG, "    Data Rate: %ukHz", (unsigned) (this->data_rate_ / 1000));
+  // }
 };
 
 } // namespace cc1101
