@@ -15,7 +15,8 @@ cc1101 Driver for RC Switch. Mod by Little Satan. With permission to modify and 
 */
 #include <SPI.h>
 #include "ELECHOUSE_CC1101_SRC_DRV.h"
-#include <Arduino.h>
+//#include <Arduino.h>
+#include "esphome/core/component.h"
 
 /****************************************************************/
 #define   WRITE_BURST       0x40            //write burst
