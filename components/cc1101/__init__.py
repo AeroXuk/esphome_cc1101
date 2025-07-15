@@ -21,24 +21,21 @@ CC1101Component = cc1101_ns.class_(
     "CC1101Component", cg.Component
 )
 
-CONFIG_SCHEMA = cv.All(
-    cv.Schema(
-        {
-            cv.GenerateID(CONF_ID): cv.declare_id(CC1101Component),
-            cv.Required(CONF_CLK_PIN): pins.internal_gpio_output_pin_number,
-            cv.Required(CONF_MISO_PIN): pins.internal_gpio_input_pin_number,
-            cv.Required(CONF_MOSI_PIN): pins.internal_gpio_output_pin_number,
-            cv.Required(CONF_CS_PIN): pins.internal_gpio_output_pin_number,
-            cv.Optional(CONF_GDO0_PIN): pins.internal_gpio_output_pin_number,
-            cv.Optional(CONF_GDO2_PIN): pins.internal_gpio_input_pin_number,
-            cv.Required(CONF_FREQUENCY): cv.float_
-        }
-    )
-    .extend(cv.COMPONENT_SCHEMA)
-)
+CONFIG_SCHEMA = cv.Schema({
+    cv.GenerateID(CONF_ID): cv.declare_id(CC1101Component),
+    cv.Required(CONF_CLK_PIN): pins.internal_gpio_output_pin_number,
+    cv.Required(CONF_MISO_PIN): pins.internal_gpio_input_pin_number,
+    cv.Required(CONF_MOSI_PIN): pins.internal_gpio_output_pin_number,
+    cv.Required(CONF_CS_PIN): pins.internal_gpio_output_pin_number,
+    cv.Optional(CONF_GDO0_PIN): pins.internal_gpio_output_pin_number,
+    cv.Optional(CONF_GDO2_PIN): pins.internal_gpio_input_pin_number,
+    cv.Required(CONF_FREQUENCY): cv.float_
+    }
+).extend(cv.COMPONENT_SCHEMA)
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
+    await cg.register_component(var, config)
 
     cg.add(var.set_clock_pin(config[CONF_CLK_PIN]))
     cg.add(var.set_miso_pin(config[CONF_MISO_PIN]))
@@ -52,4 +49,3 @@ async def to_code(config):
         cg.add(var.set_gdo2_pin(config[CONF_GDO2_PIN]))
 
     cg.add(var.set_frequency(config[CONF_FREQUENCY]))
-    await cg.register_component(var, config)

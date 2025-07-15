@@ -1,6 +1,5 @@
 #pragma once
 
-#include <ELECHOUSE_CC1101_SRC_DRV.h>
 #include "esphome/core/component.h"
 
 namespace esphome {

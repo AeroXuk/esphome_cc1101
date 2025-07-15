@@ -1,6 +1,7 @@
 #include "cc1101.h"
-#include "esphome/core/application.h"
+//#include "esphome/core/application.h"
 #include "esphome/core/log.h"
+#include "ELECHOUSE_CC1101_SRC_DRV.h"
 
 namespace esphome {
 namespace cc1101 {
@@ -35,7 +36,7 @@ void CC1101Component::setup() {
   ESP_LOGD(TAG, "Setting up CC1101...");
 
   // Register with ESPHome runtime
-  App.register_component(this);
+  //App.register_component(this);
 
   // Setup Pins
   ELECHOUSE_cc1101.setSpiPin(this->clk_pin_, this->sdi_pin_, this->sdo_pin_, this->cs_);
@@ -50,7 +51,7 @@ void CC1101Component::setup() {
     ESP_LOGD("custom", "CC1101 Connection OK.");
   }
   else {
-    ESP_LOGD("custom", "CC1101 Connection Error.");
+    ESP_LOGD("custom", "CC1101 Connection Error.");wget
   }
   
   // Init Chip
