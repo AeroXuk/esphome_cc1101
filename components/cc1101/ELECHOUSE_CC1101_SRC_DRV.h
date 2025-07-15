@@ -16,8 +16,7 @@ cc1101 Driver for RC Switch. Mod by Little Satan. With permission to modify and 
 #ifndef ELECHOUSE_CC1101_SRC_DRV_h
 #define ELECHOUSE_CC1101_SRC_DRV_h
 
-//#include <Arduino.h>
-#include "esphome/core/component.h"
+#include <Arduino.h>
 
 //***************************************CC1101 define**************************************************//
 // CC1101 CONFIG REGSITER
