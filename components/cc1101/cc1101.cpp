@@ -51,7 +51,7 @@ void CC1101Component::setup() {
     ESP_LOGD("custom", "CC1101 Connection OK.");
   }
   else {
-    ESP_LOGD("custom", "CC1101 Connection Error.");wget
+    ESP_LOGD("custom", "CC1101 Connection Error.");
   }
   
   // Init Chip
