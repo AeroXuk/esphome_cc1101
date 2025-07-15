@@ -139,9 +139,9 @@ void ELECHOUSE_CC1101::GDO0_Set (void)
 void ELECHOUSE_CC1101::Reset (void)
 {
 	digitalWrite(SS_PIN, LOW);
-	delay(1);
+	esphome::delay(1);
 	digitalWrite(SS_PIN, HIGH);
-	delay(1);
+	esphome::delay(1);
 	digitalWrite(SS_PIN, LOW);
 	while(digitalRead(MISO_PIN));
   SPI.transfer(CC1101_SRES);
@@ -1221,7 +1221,7 @@ void ELECHOUSE_CC1101::SendData(uint8_t *txBuffer,uint8_t size,int t)
   SpiWriteBurstReg(CC1101_TXFIFO,txBuffer,size);      //write data to send
   SpiStrobe(CC1101_SIDLE);
   SpiStrobe(CC1101_STX);                  //start send
-  delay(t);
+  esphome::delay(t);
   SpiStrobe(CC1101_SFTX);                 //flush TXfifo
   trxstate=1;
 }
@@ -1251,7 +1251,7 @@ return 0;
 bool ELECHOUSE_CC1101::CheckRxFifo(int t){
 if(trxstate!=2){SetRx();}
 if(SpiReadStatus(CC1101_RXBYTES) & BYTES_IN_RXFIFO){
-delay(t);
+esphome::delay(t);
 return 1;
 }else{
 return 0;
