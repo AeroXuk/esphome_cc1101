@@ -14,7 +14,11 @@ cc1101 Driver for RC Switch. Mod by Little Satan. With permission to modify and 
 ----------------------------------------------------------------------------------------------------------------
 */
 #include "ELECHOUSE_CC1101_SRC_DRV.h"
-#include "esphome/core/hal.h"
+//#include "esphome/core/hal.h"
+//#include "esphome/core/log.h"
+
+namespace esphome {
+namespace cc1101 {
 
 /****************************************************************/
 #define   WRITE_BURST       0x40            //write burst
@@ -1304,3 +1308,6 @@ uint8_t ELECHOUSE_CC1101::ReceiveData(uint8_t *rxBuffer)
 	}
 }
 ELECHOUSE_CC1101 ELECHOUSE_cc1101;
+
+} // namespace cc1101
+} // namespace esphome

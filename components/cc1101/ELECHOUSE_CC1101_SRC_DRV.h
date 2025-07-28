@@ -13,11 +13,14 @@
 cc1101 Driver for RC Switch. Mod by Little Satan. With permission to modify and publish Wilson Shen (ELECHOUSE).
 ----------------------------------------------------------------------------------------------------------------
 */
-#ifndef ELECHOUSE_CC1101_SRC_DRV_h
-#define ELECHOUSE_CC1101_SRC_DRV_h
+#pragma once
 
-#include <string>
-#include <cstdint>
+#include "esphome/core/hal.h"
+#include <utility>
+#include <vector>
+
+namespace esphome {
+namespace cc1101 {
 
 //***************************************CC1101 define**************************************************//
 // CC1101 CONFIG REGSITER
@@ -192,4 +195,5 @@ public:
 
 extern ELECHOUSE_CC1101 ELECHOUSE_cc1101;
 
-#endif
+} // namespace cc1101
+} // namespace esphome
